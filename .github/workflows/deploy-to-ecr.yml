@@ -33,10 +33,11 @@ jobs:
           # 任意のイメージタグ
           # 今回は Git のコミットハッシュにしておく
           IMAGE_TAG: ${{ github.sha }}
-        working-directory: ./test
+        working-directory: ./llm_container
         run: |
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to Lambda.
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          aws lambda update-function-code --function-name movon_llm --image-uri $REGISTRY/$REPOSITORY:$IMAGE_TAG
