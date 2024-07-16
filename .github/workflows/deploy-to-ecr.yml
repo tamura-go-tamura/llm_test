@@ -33,7 +33,7 @@ jobs:
           # 任意のイメージタグ
           # 今回は Git のコミットハッシュにしておく
           IMAGE_TAG: ${{ github.sha }}
-        working-directory: .
+        working-directory: ./
         run: |
           # Build a docker container and
           # push it to ECR so that it can
