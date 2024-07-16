@@ -35,5 +35,8 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         working-directory: .
         run: |
-          docker build -t ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }} .
-          docker push ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+          # Build a docker container and
+          # push it to ECR so that it can
+          # be deployed to Lambda.
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
