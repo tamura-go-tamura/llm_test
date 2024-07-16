@@ -33,6 +33,7 @@ jobs:
           # 任意のイメージタグ
           # 今回は Git のコミットハッシュにしておく
           IMAGE_TAG: ${{ github.sha }}
+        working-directory: .
         run: |
           docker build . -t ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
           docker push ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
