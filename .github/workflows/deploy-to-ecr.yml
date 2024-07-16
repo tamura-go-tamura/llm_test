@@ -34,5 +34,5 @@ jobs:
           # 今回は Git のコミットハッシュにしておく
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build . --tag ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+          docker build . -t ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
           docker push ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
