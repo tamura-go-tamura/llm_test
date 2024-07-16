@@ -53,4 +53,4 @@ agent.agent.llm_chain.prompt.template = (
 result = agent({"input": "今日の日付ならではの、横浜駅近辺のワクワクするようなイチオシ情報を教えてください！情報源となった、リンクも一緒に提示してください。"}, include_run_info=True)
 
 # Agentの実行
-print(result['output'])
+print(result['output'])     
