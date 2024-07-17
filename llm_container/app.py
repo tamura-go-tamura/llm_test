@@ -25,11 +25,11 @@ def web_page_reader(url: str) -> str:
 # 使用可能なツールと説明
 tools = [
     BraveSearch.from_api_key(api_key=os.environ['BRAVE_API_KEY'], search_kwargs={"count": 3}),
-    Tool(
-        name = "WebBaseLoader",
-        func=web_page_reader,
-        description="このツールは引数でURLを渡された場合に内容をテキストで返却します。引数にはURLの文字列のみを受け付けます。"
-    )
+    # Tool(
+    #     name = "WebBaseLoader",
+    #     func=web_page_reader,
+    #     description="このツールは引数でURLを渡された場合に内容をテキストで返却します。引数にはURLの文字列のみを受け付けます。"
+    # )
 ]
 
 
@@ -76,7 +76,7 @@ def get_llm_json(latitude: float, longitude : float):
     result = agent({"input": f"今日は{datetime.today()}です。今日ならではの、経度:{longitude}、緯度:{latitude}周辺の" + 
                 """
                 ワクワクするようなイチオシ情報を教えてください！また出勤途中のサラリーマンに激励の言葉を与えてください。情報源となった、リンクも一緒に提示してください。
-                回答のフォーマットは以下のjson形式で与えてください。json以外の文字列は一切与えてはいけません。
+                回答のフォーマットは以下のjson形式で与えてください。json以外の文字列は一切与えてはいけません。toolは2回まで使用可能です。
                 {
                     "comment": "ここに激励のコメントを書いてください! example: 今日はevent1のような楽しいイベントが開催されているみたいです。仕事帰りに寄ってってはいかがでしょうか？今日も頑張ってください！",
                     "events":[
