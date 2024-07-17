@@ -45,7 +45,7 @@ agent = initialize_agent(
             verbose=True,
         )
 agent.agent.llm_chain.prompt.template = (
-            "Answers must be given in Japanese and thoughts need to be spelled out in English. You need to use Tool at least once."  # noqa: E501
+            "Answers must be given in Japanese and thoughts need to be spelled out in English. "  # noqa: E501
             + agent.agent.llm_chain.prompt.template
         )
 
@@ -76,7 +76,7 @@ def get_llm_json(latitude: float, longitude : float):
     result = agent({"input": f"今日は{datetime.today()}です。今日ならではの、経度:{longitude}、緯度:{latitude}周辺の" + 
                 """
                 ワクワクするようなイチオシ情報を教えてください！また出勤途中のサラリーマンに激励の言葉を与えてください。情報源となった、リンクも一緒に提示してください。
-                回答のフォーマットは以下のjson形式で与えてください。json以外の文字列は一切与えてはいけません。また、actionを行なっていいのは3回までです。
+                回答のフォーマットは以下のjson形式で与えてください。json以外の文字列は一切与えてはいけません。
                 {
                     "comment": "ここに激励のコメントを書いてください! example: 今日はevent1のような楽しいイベントが開催されているみたいです。仕事帰りに寄ってってはいかがでしょうか？今日も頑張ってください！",
                     "events":[
