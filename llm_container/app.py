@@ -55,8 +55,8 @@ def handler(event, context):
     print( "context:", context )
 
     # パラメータを取得する
-    latitude = event.get('queryStringParameters').get('latitude')
-    longitude = event.get('queryStringParameters').get('longitude')
+    latitude = float(event.get('queryStringParameters').get('latitude'))
+    longitude = float(event.get('queryStringParameters').get('longitude'))
 
     while True:
         try:
